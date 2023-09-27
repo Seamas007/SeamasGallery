@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+
+<% if (error != '') { %>
+    <%= error %>
+<% } else { %>
+<h2 class="page-title">New Gallery</h2>
+<form action="/gallery/save" method="POST">
+    <div class="gallery-edit">
+        <div class="gallery-name"><input type="text" name="galleryName" value="<%= item[0].name %>"></div>
+        <div class="gallery-icon-link"><input type="text" name="galleryIcon" value="<%= item[0].icon %>"> <img src="<%= item[0].icon %>"></div>
+        <div class="gallery-url"><input type="text" name="galleryUrl" value="<%= item[0].galleryUrl %>"></div>
+        <div class="gallery-btn">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary" onclick="javascript:location.href='/';">Cancel</button>
+            <input type="hidden" name="galleryId" value="<%= item[0]._id %>">
+        </div>
+    </div>
+</form>
+<% } %>
+
+<%- include('partials/footer.ejs') %>
